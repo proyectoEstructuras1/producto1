@@ -1,7 +1,10 @@
 #ifndef PRODUCTO_H
 #define PRODUCTO_H
 #include<iostream>
+#include <fstream>
+#include <sstream>
 #include<string>
+#include <stdlib.h>
 
 using namespace std;
 class Producto
@@ -23,5 +26,10 @@ public:
     void modificaPrecio(float p);
     void modificaDatos(string N, int n, float p);
 };
-
+istream& operator>>(istream& teclado, Producto& X);
+ostream& operator<<(ostream& monitor, Producto X);
+bool operator==(Producto Izquierdo, Producto Derecho);
+bool operator!=(Producto Izquierdo, Producto Derecho);
+//ofstream& operator<<(ofstream& HaciaArchivo, Producto Derecho);
+//ifstream& operator>>(ifstream& DesdeArchivo, Producto& Derecho);
 #endif // PRODUCTO_H

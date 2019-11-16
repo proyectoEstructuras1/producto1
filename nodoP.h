@@ -2,8 +2,7 @@
 #define NODOP_H
 #include<Producto.h>
 
-class NodoP
-{
+class NodoP{
 private:
 
     NodoP* sig;
