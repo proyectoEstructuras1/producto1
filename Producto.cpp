@@ -11,7 +11,7 @@ this->numero=n;
 this->precio=p;
 }
 void Producto::pideDatos(void){
-cout<<"Nombre del producto:";cin>>this->Nombre;
+cout<<"Nombre del producto:";getline(cin,Nombre);
 cout<<endl<<"Numero de producto:";cin>>numero;
 cout<<endl<<"Precio del producto:";cin>>precio;
 }
