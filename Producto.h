@@ -13,6 +13,7 @@ class Producto
     string Nombre;
     int numero;
     float precio;
+    void verifica(void);
 public:
     Producto(void);
     Producto(string N, int n, float p);
