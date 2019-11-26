@@ -55,3 +55,4 @@ void NodoA::modificaDer(NodoA* d)
     this->Der=d;
 
 }
+
