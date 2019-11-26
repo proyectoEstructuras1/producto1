@@ -1,6 +1,6 @@
 #ifndef LISTAP_H
 #define LISTAP_H
-#include "nodoP.h"
+#include"nodoP.h"
 #include <iostream>
 
 using namespace std;
@@ -22,8 +22,9 @@ class listaP
     void muestraIniFin(void);
     void muestraFinIni(void);
     void eliminaLista(void);
-    void guardaLista(void);
     void cargaLista(void);
+    void guardaLista(void);
+
 
 };
 
