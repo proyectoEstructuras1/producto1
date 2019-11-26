@@ -1,5 +1,7 @@
 #include "Producto.h"
 
+
+
 void Producto::verifica(void)
 {
     if (this->numero<0)
@@ -22,105 +24,111 @@ void Producto::verifica(void)
     }
 
 }
-Producto::Producto(void){
+Producto::Producto(void)
+{
 Nombre="";
 numero=0;
 precio=0.0;
-    verifica();
+
+verifica();
+
 }
-Producto::Producto(string N, int n, float p){
+Producto::Producto(string N, int n, float p)
+{
 this->Nombre=N;
 this->numero=n;
 this->precio=p;
-    verifica();
+
+verifica();
 }
-void Producto::pideDatos(void){
+void Producto::pideDatos(void)
+{
 cout<<"Nombre del producto:";getline(cin,Nombre);
-cout<<endl<<"Numero de producto:";cin>>numero;
-cout<<endl<<"Precio del producto:";cin>>precio;
-    verifica();
+cout<<endl<<"Numero de producto:";cin>>this->numero;
+cout<<endl<<"Precio del producto:";cin>>this->precio;
+verifica();
 }
-void Producto::muestraDatos(void){
+void Producto::muestraDatos(void)
+{
 cout<<"--------------"<<endl
     <<"Producto:"<<this->Nombre<<endl
     <<"Numero:"<<this->numero<<endl
     <<"Precio:"<<this->precio<<endl
     <<"--------------"<<endl;
+
 }
-string Producto::dameNombre(void){
+string Producto::dameNombre(void)
+{
 return this->Nombre;
+
+
 }
-void Producto::modificaNombre(string N){
+void Producto::modificaNombre(string N)
+{
 this->Nombre=N;
+
+
 }
-int Producto::dameNumero(void){
+int Producto::dameNumero(void)
+{
+
 return this->numero;
+
 }
-void Producto::modificaNumero(int n){
+void Producto::modificaNumero(int n)
+{
 this->numero=n;
-    verifica();
+verifica();
+
 }
-float Producto::damePrecio(void){
+float Producto::damePrecio(void)
+{
+
 return this->precio;
+
 }
-void Producto::modificaPrecio(float p){
+void Producto::modificaPrecio(float p)
+{
+
 this->precio=p;
-    verifica();
+verifica();
 }
-void Producto::modificaDatos(string N, int n, float p){
+void Producto::modificaDatos(string N, int n, float p)
+{
+
 this->Nombre=N;
 this->numero=n;
 this->precio=p;
-    verifica();
+verifica();
 }
-istream& operator>>(istream& teclado, Producto& X){
-    X.pideDatos();
-    verifica();
-    return teclado;
+void Producto::guardaLista(ofstream& salida)
+{
+
+
+    salida<<Nombre<<","<<numero<<","<<precio<<endl;
+
+
 }
-ostream& operator<<(ostream& monitor, Producto X){
-    X.muestraDatos();
-    return monitor;
-}
-bool operator==(Producto Izquierdo, Producto Derecho){
-    return
-            Izquierdo.dameNombre() == Derecho.dameNombre()
-            &&
-            Izquierdo.dameNumero() == Derecho.dameNumero()
-            &&
-            Izquierdo.damePrecio() == Derecho.damePrecio()
-    ;
-}
-bool operator!=(Producto Izquierdo, Producto Derecho){
-    return
-            Izquierdo.dameNombre() != Derecho.dameNombre()
-            ||
-            Izquierdo.dameNumero() != Derecho.dameNumero()
-            ||
-            Izquierdo.damePrecio() != Derecho.damePrecio()
-    ;
-}
-ofstream& operator<<(ofstream& HaciaArchivo, Producto Derecho){
-    HaciaArchivo<<Derecho.dameNombre()<<","
-                <<Derecho.dameNumero()<<","
-                <<Derecho.damePrecio();
-    return HaciaArchivo;
-}
-ifstream& operator>>(ifstream& DesdeArchivo, Producto& Derecho){
-    int numero;
-    float precio;
-    string datos,atributo;
-    getline(DesdeArchivo,datos);
-    stringstream ss(datos);
-    getline(ss,atributo,',');
-    Derecho.modificaNombre(atributo);
-    getline(ss,atributo,',');
-    numero = atoi(atributo.c_str());
-    verifica();
-    Derecho.modificaNumero(numero);
-    getline(ss,atributo);
-    precio = atof(atributo.c_str());
-    verifica();
-    Derecho.modificaPrecio(precio);
-    return DesdeArchivo;
+void Producto::cargaLista(ifstream& entrada)
+{
+     string datos;
+   string atributo;
+
+
+
+   getline(entrada,datos);
+
+   stringstream ss(datos);
+
+   getline(ss,atributo,',');
+   Nombre=atributo;
+
+   getline(ss,atributo,',');
+   numero=atoi(atributo.c_str());
+
+   getline(ss,atributo);
+   precio=atof(atributo.c_str());
+
+
+
 }
