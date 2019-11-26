@@ -89,7 +89,7 @@ switch(op)
             int s;
             cout<<"apartir de que dato desea eliminar:";cin>>s;
             if(a.eliminaSubarbol(s))
-            cout<<"Producto eliminado..."<<endl;
+            cout<<"Productos eliminados..."<<endl;
             else
                 cout <<"producto no encontrado"<<endl;
             break;
