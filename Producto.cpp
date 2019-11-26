@@ -135,7 +135,6 @@ void Producto::cargaLista(ifstream& entrada)
 istream& operator>>(istream& teclado, Producto& X)
 {	
     X.pideDatos();	
-    verifica();	
     return teclado;	
 }
 
