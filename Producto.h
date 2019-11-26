@@ -30,5 +30,8 @@ public:
     void cargaLista(ifstream& entrada);
 
 };
-
+istream& operator>>(istream& teclado, Producto& X);	
+ostream& operator<<(ostream& monitor, Producto X);	
+bool operator==(Producto Izquierdo, Producto Derecho);	
+bool operator!=(Producto Izquierdo, Producto Derecho);
 #endif // PRODUCTO_H
