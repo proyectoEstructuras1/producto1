@@ -205,25 +205,53 @@ bool ArbolP::eliminaNodo(int d)
 
 
 }
-bool ArbolP::eliminaNodo(NodoA* nP,NodoA* r,int d)
-{
+bool Arbol::eliminaNodo(NodoA* nP,NodoA* r,int d){
+    if(d==r->dameDato() && r->dameIzq()==NULL && r->dameDer()==NULL){
+        delete r;
 
-aaaabbbbb
+        if(nP==NULL)//Y eres la raiz
+            raiz=NULL;
+        else if(r==nP->dameIzq())
+            nP->modificaIzq(NULL);
+        else//Y eres hijo derecho de nP
+            nP->modificaDer(NULL);
 
- Habdbdud
+        return true;
+    }
+    else if(d==r->dameDato() && r->dameIzq()!=NULL && r->dameDer()==NULL){
+        if(nP==NULL)
+            raiz=r->dameIzq();
+        else if(r==nP->dameIzq())
+            nP->modificaIzq(r->dameIzq());
+        else
+            nP->modificaDer(r->dameIzq());
 
-   
+        delete r;
+        return true;
+    }
+    else if(d==r->dameDato() && r->dameIzq()==NULL && r->dameDer()!=NULL){
+        if(nP==NULL)
+            raiz=r->dameDer();
+        else if(r==nP->dameIzq())
+            nP->modificaIzq(r->dameDer());
+        else
+            nP->modificaDer(r->dameDer());
 
+        delete r;
+        return true;
+    }
+    else if(d==r->dameDato() && r->dameIzq()!=NULL && r->dameDer()!=NULL){
+        traeMenorNodo(r,r->dameDer(),r);
+        return true;
+    }
+    else if(d<r->dameDato() && r->dameIzq()==NULL){
+        return false;
+    }
+    else if(d>r->dameDato() && r->dameDer()==NULL){
+        return false;
+    }
+    else if(d<r->dameDato() && r->dameIzq()!=NULL)
+        return eliminaNodo(r,r->dameIzq(),d);
+    else if(d>r->dameDato() && r->dameDer()!=NULL)
+        return eliminaNodo(r,r->dameDer(),d);
 }
-
-
-
-
-
-
-
-
-
-
-
-
