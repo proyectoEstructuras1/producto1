@@ -23,13 +23,15 @@ bool menu(ArbolP& a)
        <<"2.- Muestra la lista en pre orden"<<endl
        <<"3.- Muestra la lista en in orden"<<endl
        <<"4.- Muestra la lista en pos orden"<<endl
-       <<"5.- Busca un producto"<<endl
-       <<"6.- Nodos en el arbol"<<endl
-       <<"7.- Profundidad del arbol"<<endl
-       <<"8.- Elimina sub arbol"<<endl
-       <<"9.- Elimina un producto"<<endl
-       <<"10.- Elimina el arbol "<<endl
-       <<"11.- Salir"<<endl
+       <<"5.- Carga lista"<<endl
+       <<"6.- Guarda lista"<<endl
+       <<"7.- Busca un producto"<<endl
+       <<"8.- Nodos en el arbol"<<endl
+       <<"9.- Profundidad del arbol"<<endl
+       <<"10.- Elimina sub arbol"<<endl
+       <<"11.- Elimina un producto"<<endl
+       <<"12.- Elimina el arbol "<<endl
+       <<"13.- Salir"<<endl
        <<"Cual es tu opcion?";
        cin>>op;
        string enter;
@@ -37,7 +39,7 @@ bool menu(ArbolP& a)
        system("cls");
        operaciones(a,op);
 
-    return op!=11;
+    return op!=13;
 
 }
 void operaciones(ArbolP& a, int op)
@@ -63,34 +65,42 @@ switch(op)
             a.muestraPos();
             break;
         case 5:
+            a.cargaLista();
+            cout<<"lista cargada"<<endl;
+            break;
+        case 6:
+            a.guardaLista();
+            cout<<"Lista guardada"<<endl;
+            break;
+        case 7:
             int d;
             cout<<"numero de producto:";cin>>d;
             a.buscaNodo(d);
             break;
-        case 6:
+        case 8:
             cout<<"Estos son los nodos en el arbol: ";
             cout<<a.cuentaNodos()<<endl;
             break;
-        case 7:
+        case 9:
             cout<<"Esta es la profundidad del arbol: ";
             cout<<a.profundidadDelArbol()<<endl;
             break;
-        case 8:
+        case 10:
             int s;
             cout<<"apartir de que dato desea eliminar:";cin>>s;
             a.eliminaSubarbol(s);
             break;
-        case 9:
+        case 11:
             int b;
             cout<<"Que numero de producto desea eliminar:";
             cin>>b;
             a.eliminaNodo(b);
             cout<<"Producto eliminado..."<<endl;
             break;
-        case 10:
+        case 12:
             a.eliminaArbol();
             break;
-        case 11:
+        case 13:
          cout<<"Adios! :v"<<endl<<endl;
             break;
         default:
