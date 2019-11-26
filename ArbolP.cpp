@@ -322,3 +322,10 @@ void ArbolP::traeMenorNodo(NodoA* nP,NodoA* r,NodoA* aqui)
     else
         traeMenorNodo(r,r->dameIzq(),aqui);
 }
+void ArbolP::guardaLista(void)
+{
+ofstream haciaArchivo("guarda.txt");
+if(raiz!=NULL)
+guardaLista(raiz , haciaArchivo);
+
+}
