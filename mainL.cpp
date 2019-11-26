@@ -10,18 +10,6 @@ void operaciones(listaP& a, int op);
 
 int main(void)
 {listaP q;
-  /*Producto a("leche",3,12.12), b ("agua",1,12.1),c("ref",2,14.4),d("ref",4,14.4),e("ref",10,14.4),f("ref",9,14.4),g("ref",7,14.4),h("ref",3,14.4);
-
-q.insertaNodo(a);
-q.insertaNodo(b);
-q.insertaNodo(e);
-q.insertaNodo(c);
-q.insertaNodo(d);
-q.insertaNodo(f);
-q.insertaNodo(g);
-q.insertaNodo(h);
-q.eliminaNodo(3);
-q.muestraIniFin();*/
 while(menu(q));
 
     return 0;
@@ -34,9 +22,11 @@ bool menu(listaP& a)
    cout<<"1.- Inserta un producto"<<endl
        <<"2.- Muestra la lista"<<endl
        <<"3.- Busca un producto"<<endl
-       <<"4.- Elimina un producto"<<endl
-       <<"5.- Elimina la lista"<<endl
-       <<"6.- Salir"<<endl
+       <<"4.- Carga lista"<<endl
+       <<"5.- Guarda lista"<<endl
+       <<"6.- Elimina un producto"<<endl
+       <<"7.- Elimina la lista"<<endl
+       <<"8.- Salir"<<endl
        <<"Cual es tu opcion?";
        cin>>op;
        string enter;
@@ -44,7 +34,7 @@ bool menu(listaP& a)
        system("cls");
        operaciones(a,op);
 
-    return op!=6;
+    return op!=8;
 
 }
 void operaciones(listaP& a, int op)
@@ -64,19 +54,33 @@ switch(op)
             a.muestraIniFin();
             break;
         case 3:
-            a.buscaNodo();
+            if(!a.buscaNodo())
+                cout <<"no se encontro el producto"<<endl;
             break;
         case 4:
+
+            a.cargaLista();
+                cout<<"lista cargada"<<endl;
+            break;
+        case 5:
+
+            a.guardaLista();
+                cout<<"Lista guardada"<<endl;
+            break;
+        case 6:
             int b;
             cout<<"Que numero de producto desea eliminar:";
             cin>>b;
-            a.eliminaNodo(b);
+
+            if(a.eliminaNodo(b))
             cout<<"Producto eliminado..."<<endl;
+            else
+                cout<<"no se encontro el producto"<<endl;
             break;
-        case 5:
+        case 7:
             a.eliminaLista();
             break;
-        case 6:
+        case 8:
          cout<<"Adios! :v"<<endl<<endl;
             break;
         default:
