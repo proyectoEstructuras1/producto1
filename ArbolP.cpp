@@ -210,7 +210,8 @@ bool ArbolP::eliminaNodo(NodoA* nP,NodoA* r,int d)
 
 aaaabbbbb
 
- Ha
+ Habdbdud
+
    
 
 }
