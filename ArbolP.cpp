@@ -238,6 +238,7 @@ bool ArbolP::eliminaNodo(int d)
    if(raiz==NULL)
         return false;
     else if(d==raiz->dameDato().dameNumero()){
+        raiz->dameDato().muestraDatos();
         eliminaArbol();
         return true;
     }
@@ -249,6 +250,7 @@ bool ArbolP::eliminaNodo(int d)
 }
 bool ArbolP::eliminaNodo(NodoA* nP,NodoA* r,int d){
     if(d==r->dameDato().dameNumero() && r->dameIzq()==NULL && r->dameDer()==NULL){
+        
         delete r;
 
         if(nP==NULL)//Y eres la raiz
@@ -267,7 +269,7 @@ bool ArbolP::eliminaNodo(NodoA* nP,NodoA* r,int d){
             nP->modificaIzq(r->dameIzq());
         else
             nP->modificaDer(r->dameIzq());
-
+r->dameDato().muestraDatos();
         delete r;
         return true;
     }
@@ -278,7 +280,7 @@ bool ArbolP::eliminaNodo(NodoA* nP,NodoA* r,int d){
             nP->modificaIzq(r->dameDer());
         else
             nP->modificaDer(r->dameDer());
-
+    r->dameDato().muestraDatos();
         delete r;
         return true;
     }
