@@ -236,12 +236,10 @@ bool ArbolP::eliminaSubarbol(NodoA* nP,NodoA* r,int d){
 
 bool ArbolP::eliminaNodo(int d)
 {
-   if(raiz==NULL)
+
+    if(raiz==NULL){
+        cout<<"Arbol vacio"<<endl<<endl;
         return false;
-    else if(d==raiz->dameDato().dameNumero()){
-        raiz->dameDato().muestraDatos();
-        eliminaArbol();
-        return true;
     }
     else
         return eliminaNodo(NULL,raiz,d);
@@ -251,7 +249,7 @@ bool ArbolP::eliminaNodo(int d)
 }
 bool ArbolP::eliminaNodo(NodoA* nP,NodoA* r,int d){
     if(d==r->dameDato().dameNumero() && r->dameIzq()==NULL && r->dameDer()==NULL){
-        
+        r->dameDato().muestraDatos();
         delete r;
 
         if(nP==NULL)//Y eres la raiz
@@ -270,7 +268,7 @@ bool ArbolP::eliminaNodo(NodoA* nP,NodoA* r,int d){
             nP->modificaIzq(r->dameIzq());
         else
             nP->modificaDer(r->dameIzq());
-r->dameDato().muestraDatos();
+        r->dameDato().muestraDatos();
         delete r;
         return true;
     }
@@ -303,21 +301,28 @@ r->dameDato().muestraDatos();
 void ArbolP::traeMenorNodo(NodoA* nP,NodoA* r,NodoA* aqui)
 {
     if(r->dameIzq()==NULL && r->dameDer()==NULL && r==nP->dameIzq()){
+        aqui->dameDato().muestraDatos();
         aqui->modificaDato(r->dameDato());
         nP->modificaIzq(NULL);
+
         delete r;
     }
     else if(r->dameIzq()==NULL && r->dameDer()==NULL && r==nP->dameDer()){
+        aqui->dameDato().muestraDatos();
         aqui->modificaDato(r->dameDato());
         nP->modificaDer(NULL);
+
         delete r;
     }
     else if(r->dameIzq()==NULL && r->dameDer()!=NULL && r==nP->dameIzq()){
+        aqui->dameDato().muestraDatos();
         aqui->modificaDato(r->dameDato());
         nP->modificaIzq(r->dameDer());
+
         delete r;
     }
     else if(r->dameIzq()==NULL && r->dameDer()!=NULL && r==nP->dameDer()){
+        aqui->dameDato().muestraDatos();
         aqui->modificaDato(r->dameDato());
         nP->modificaDer(r->dameDer());
         delete r;
