@@ -322,10 +322,39 @@ void ArbolP::traeMenorNodo(NodoA* nP,NodoA* r,NodoA* aqui)
     else
         traeMenorNodo(r,r->dameIzq(),aqui);
 }
+void ArbolP::cargaLista(void)
+{
+
+ifstream desdeArchivo("carga.txt");
+Producto a;
+
+while(!desdeArchivo.eof())
+{
+    a.cargaLista(desdeArchivo);
+    insertaNodo(a);
+
+}
+}
 void ArbolP::guardaLista(void)
 {
-ofstream haciaArchivo("guarda.txt");
+
 if(raiz!=NULL)
-guardaLista(raiz , haciaArchivo);
+{
+    ofstream haciaArchivo("guarda.txt");
+    guardaLista(raiz , haciaArchivo);
+    haciaArchivo.close();
+}
+
+}
+void ArbolP::guardaLista(NodoA* r,ofstream& salida)
+{
+
+
+    if(r!=NULL)
+    {
+    r->dameDato().guardaLista(salida);
+    guardaLista(r->dameIzq(),salida);
+    guardaLista(r->dameDer(),salida);
+    }
 
 }
