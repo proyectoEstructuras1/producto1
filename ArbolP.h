@@ -34,6 +34,6 @@ public:
     int profundidadDelArbol(void);
     bool eliminaSubarbol(int d);
     bool eliminaNodo(int d);
-
+    void guardaLista(void)
 
 };
