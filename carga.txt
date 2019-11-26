@@ -1,0 +1,2 @@
+computadora,2,234.45
+celular,4,22.4
