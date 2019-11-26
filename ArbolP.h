@@ -20,6 +20,7 @@ private:
     bool eliminaSubarbol(NodoA* nP,NodoA* r,int d);
     bool eliminaNodo(NodoA* nP,NodoA* r,int d);
     void traeMenorNodo(NodoA* nP,NodoA* r,NodoA* aqui);
+    void guardaLista(NodoA* r,ofstream& salida);
 
 public:
     ArbolP(void);
@@ -34,6 +35,7 @@ public:
     int profundidadDelArbol(void);
     bool eliminaSubarbol(int d);
     bool eliminaNodo(int d);
-    void guardaLista(void)
+    void cargaLista(void);
+    void guardaLista(void);
 
 };
