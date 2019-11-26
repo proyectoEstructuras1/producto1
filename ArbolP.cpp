@@ -124,7 +124,9 @@ bool ArbolP::buscaNodo(NodoA* r, int d)
 {
 
 if(d==r->dameDato().dameNumero())
-        return true;
+        {
+ r->dameDato().muestraDatos();
+        return true;}
     else if(d<r->dameDato().dameNumero() && r->dameIzq()==NULL)
         return false;
     else if(d>r->dameDato().dameNumero() && r->dameDer()==NULL)
