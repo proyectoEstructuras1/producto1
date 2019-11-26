@@ -112,9 +112,12 @@ if(r!=NULL)
 bool ArbolP::buscaNodo(int d)
 {
     if(raiz==NULL)
-    return false;
+    {cout<<"Lista vacia"<<endl;
+        return false;}
     else if (d==raiz->dameDato().dameNumero())
-        return true;
+        {
+ raiz->dameDato().muestraDatos();
+        return true;}
     else
     return buscaNodo(raiz,d);
 
@@ -124,17 +127,21 @@ bool ArbolP::buscaNodo(NodoA* r, int d)
 {
 
 if(d==r->dameDato().dameNumero())
-        {
+{
  r->dameDato().muestraDatos();
         return true;}
     else if(d<r->dameDato().dameNumero() && r->dameIzq()==NULL)
-        return false;
+    {cout<<"dato no encontrado"<<endl;
+        return false;}
     else if(d>r->dameDato().dameNumero() && r->dameDer()==NULL)
-        return false;
+        {cout<<"dato no encontrado"<<endl;
+        return false;}
     else if(d<r->dameDato().dameNumero())
         return buscaNodo(r->dameIzq(),d);
     else if(d>r->dameDato().dameNumero())
         return buscaNodo(r->dameDer(),d);
+
+
 
 
 
