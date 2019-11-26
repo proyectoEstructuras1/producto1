@@ -196,7 +196,7 @@ bool Arbol::eliminaSubarbol(int d)
 {
     if(raiz==NULL)
         return false;
-    else if(d==raiz->dameDato()){
+    else if(d==raiz->dameDato().dameNumero()){
         eliminaArbol();
         return true;
     }
@@ -204,23 +204,23 @@ bool Arbol::eliminaSubarbol(int d)
         return eliminaSubarbol(NULL,raiz,d);
 }
 bool Arbol::eliminaSubarbol(NodoA* nP,NodoA* r,int d){
-    if(d==r->dameDato()&&r==nP->dameIzq()){
+    if(d==r->dameDato().dameNumero()&&r==nP->dameIzq()){
         eliminaArbol(r);
         nP->modificaIzq(NULL);
         return true;
     }
-    else if(d==r->dameDato()&&r==nP->dameDer()){
+    else if(d==r->dameDato().dameNumero()&&r==nP->dameDer()){
         eliminaArbol(r);
         nP->modificaDer(NULL);
         return true;
     }
-    else if(d<r->dameDato()&&r->dameIzq()==NULL)
+    else if(d<r->dameDato().dameNumero()&&r->dameIzq()==NULL)
         return false;
-    else if(d>r->dameDato()&&r->dameDer()==NULL)
+    else if(d>r->dameDato().dameNumero()&&r->dameDer()==NULL)
         return false;
-    else if(d<r->dameDato()&&r->dameIzq()!=NULL)
+    else if(d<r->dameDato().dameNumero()&&r->dameIzq()!=NULL)
         return eliminaSubarbol(r,r->dameIzq(),d);
-    else if(d>r->dameDato()&&r->dameDer()!=NULL)
+    else if(d>r->dameDato().dameNumero()&&r->dameDer()!=NULL)
         return eliminaSubarbol(r,r->dameDer(),d);
 }
 bool ArbolP::eliminaNodo(int d)
