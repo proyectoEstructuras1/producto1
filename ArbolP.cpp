@@ -191,6 +191,38 @@ int ArbolP::profundidadDelArbol(NodoA* r, int pP)
 
 
 }
+
+bool Arbol::eliminaSubarbol(int d)
+{
+    if(raiz==NULL)
+        return false;
+    else if(d==raiz->dameDato()){
+        eliminaArbol();
+        return true;
+    }
+    else
+        return eliminaSubarbol(NULL,raiz,d);
+}
+bool Arbol::eliminaSubarbol(NodoA* nP,NodoA* r,int d){
+    if(d==r->dameDato()&&r==nP->dameIzq()){
+        eliminaArbol(r);
+        nP->modificaIzq(NULL);
+        return true;
+    }
+    else if(d==r->dameDato()&&r==nP->dameDer()){
+        eliminaArbol(r);
+        nP->modificaDer(NULL);
+        return true;
+    }
+    else if(d<r->dameDato()&&r->dameIzq()==NULL)
+        return false;
+    else if(d>r->dameDato()&&r->dameDer()==NULL)
+        return false;
+    else if(d<r->dameDato()&&r->dameIzq()!=NULL)
+        return eliminaSubarbol(r,r->dameIzq(),d);
+    else if(d>r->dameDato()&&r->dameDer()!=NULL)
+        return eliminaSubarbol(r,r->dameDer(),d);
+}
 bool ArbolP::eliminaNodo(int d)
 {
    if(raiz==NULL)
@@ -254,4 +286,29 @@ bool Arbol::eliminaNodo(NodoA* nP,NodoA* r,int d){
         return eliminaNodo(r,r->dameIzq(),d);
     else if(d>r->dameDato() && r->dameDer()!=NULL)
         return eliminaNodo(r,r->dameDer(),d);
+}
+void Arbol::traeMenorNodo(NodoA* nP,NodoA* r,NodoA* aqui)
+{
+    if(r->dameIzq()==NULL && r->dameDer()==NULL && r==nP->dameIzq()){
+        aqui->modificaDato(r->dameDato());
+        nP->modificaIzq(NULL);
+        delete r;
+    }
+    else if(r->dameIzq()==NULL && r->dameDer()==NULL && r==nP->dameDer()){
+        aqui->modificaDato(r->dameDato());
+        nP->modificaDer(NULL);
+        delete r;
+    }
+    else if(r->dameIzq()==NULL && r->dameDer()!=NULL && r==nP->dameIzq()){
+        aqui->modificaDato(r->dameDato());
+        nP->modificaIzq(r->dameDer());
+        delete r;
+    }
+    else if(r->dameIzq()==NULL && r->dameDer()!=NULL && r==nP->dameDer()){
+        aqui->modificaDato(r->dameDato());
+        nP->modificaDer(r->dameDer());
+        delete r;
+    }
+    else
+        traeMenorNodo(r,r->dameIzq(),aqui);
 }
