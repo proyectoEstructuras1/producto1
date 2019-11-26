@@ -27,6 +27,8 @@ bool menu(listaP& a)
        <<"6.- Salir"<<endl
        <<"Cual es tu opcion?";
        cin>>op;
+       string enter;
+       getline(cin,enter);
        system("cls");
        operaciones(a,op);
 
