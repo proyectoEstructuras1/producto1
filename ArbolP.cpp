@@ -192,7 +192,7 @@ int ArbolP::profundidadDelArbol(NodoA* r, int pP)
 
 }
 
-bool Arbol::eliminaSubarbol(int d)
+bool ArbolP::eliminaSubarbol(int d)
 {
     if(raiz==NULL)
         return false;
@@ -203,7 +203,7 @@ bool Arbol::eliminaSubarbol(int d)
     else
         return eliminaSubarbol(NULL,raiz,d);
 }
-bool Arbol::eliminaSubarbol(NodoA* nP,NodoA* r,int d){
+bool ArbolP::eliminaSubarbol(NodoA* nP,NodoA* r,int d){
     if(d==r->dameDato().dameNumero()&&r==nP->dameIzq()){
         eliminaArbol(r);
         nP->modificaIzq(NULL);
@@ -223,6 +223,7 @@ bool Arbol::eliminaSubarbol(NodoA* nP,NodoA* r,int d){
     else if(d>r->dameDato().dameNumero()&&r->dameDer()!=NULL)
         return eliminaSubarbol(r,r->dameDer(),d);
 }
+
 bool ArbolP::eliminaNodo(int d)
 {
    if(raiz==NULL)
@@ -237,8 +238,8 @@ bool ArbolP::eliminaNodo(int d)
 
 
 }
-bool Arbol::eliminaNodo(NodoA* nP,NodoA* r,int d){
-    if(d==r->dameDato() && r->dameIzq()==NULL && r->dameDer()==NULL){
+bool ArbolP::eliminaNodo(NodoA* nP,NodoA* r,int d){
+    if(d==r->dameDato().dameNumero() && r->dameIzq()==NULL && r->dameDer()==NULL){
         delete r;
 
         if(nP==NULL)//Y eres la raiz
@@ -250,7 +251,7 @@ bool Arbol::eliminaNodo(NodoA* nP,NodoA* r,int d){
 
         return true;
     }
-    else if(d==r->dameDato() && r->dameIzq()!=NULL && r->dameDer()==NULL){
+    else if(d==r->dameDato().dameNumero() && r->dameIzq()!=NULL && r->dameDer()==NULL){
         if(nP==NULL)
             raiz=r->dameIzq();
         else if(r==nP->dameIzq())
@@ -261,7 +262,7 @@ bool Arbol::eliminaNodo(NodoA* nP,NodoA* r,int d){
         delete r;
         return true;
     }
-    else if(d==r->dameDato() && r->dameIzq()==NULL && r->dameDer()!=NULL){
+    else if(d==r->dameDato().dameNumero() && r->dameIzq()==NULL && r->dameDer()!=NULL){
         if(nP==NULL)
             raiz=r->dameDer();
         else if(r==nP->dameIzq())
@@ -272,22 +273,22 @@ bool Arbol::eliminaNodo(NodoA* nP,NodoA* r,int d){
         delete r;
         return true;
     }
-    else if(d==r->dameDato() && r->dameIzq()!=NULL && r->dameDer()!=NULL){
+    else if(d==r->dameDato().dameNumero() && r->dameIzq()!=NULL && r->dameDer()!=NULL){
         traeMenorNodo(r,r->dameDer(),r);
         return true;
     }
-    else if(d<r->dameDato() && r->dameIzq()==NULL){
+    else if(d<r->dameDato().dameNumero() && r->dameIzq()==NULL){
         return false;
     }
-    else if(d>r->dameDato() && r->dameDer()==NULL){
+    else if(d>r->dameDato().dameNumero() && r->dameDer()==NULL){
         return false;
     }
-    else if(d<r->dameDato() && r->dameIzq()!=NULL)
+    else if(d<r->dameDato().dameNumero() && r->dameIzq()!=NULL)
         return eliminaNodo(r,r->dameIzq(),d);
-    else if(d>r->dameDato() && r->dameDer()!=NULL)
+    else if(d>r->dameDato().dameNumero() && r->dameDer()!=NULL)
         return eliminaNodo(r,r->dameDer(),d);
 }
-void Arbol::traeMenorNodo(NodoA* nP,NodoA* r,NodoA* aqui)
+void ArbolP::traeMenorNodo(NodoA* nP,NodoA* r,NodoA* aqui)
 {
     if(r->dameIzq()==NULL && r->dameDer()==NULL && r==nP->dameIzq()){
         aqui->modificaDato(r->dameDato());
