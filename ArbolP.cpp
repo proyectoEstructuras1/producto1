@@ -219,6 +219,7 @@ bool ArbolP::eliminaSubarbol(NodoA* nP,NodoA* r,int d){
         return true;
     }
     else if(d==r->dameDato().dameNumero()&&r==nP->dameDer()){
+       
         eliminaArbol(r);
         nP->modificaDer(NULL);
         return true;
