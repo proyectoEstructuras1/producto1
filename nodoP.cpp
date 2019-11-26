@@ -33,3 +33,4 @@ NodoP* NodoP::damePre(void){
 void NodoP::modificaPre(NodoP* p){
     this->pre=p;
 }
+
