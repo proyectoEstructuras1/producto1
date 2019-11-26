@@ -132,3 +132,32 @@ void Producto::cargaLista(ifstream& entrada)
 
 
 }
+istream& operator>>(istream& teclado, Producto& X)
+{	
+    X.pideDatos();	
+    verifica();	
+    return teclado;	
+}
+
+ostream& operator<<(ostream& monitor, Producto X){	
+    X.muestraDatos();	
+    return monitor;	
+}
+bool operator==(Producto Izquierdo, Producto Derecho){	    
+    return	
+            Izquierdo.dameNombre() == Derecho.dameNombre()	
+            &&	
+            Izquierdo.dameNumero() == Derecho.dameNumero()	
+            &&	
+            Izquierdo.damePrecio() == Derecho.damePrecio()	
+    ;	
+}
+bool operator!=(Producto Izquierdo, Producto Derecho){	
+    return	
+            Izquierdo.dameNombre() != Derecho.dameNombre()	
+            ||	
+            Izquierdo.dameNumero() != Derecho.dameNumero()	
+            ||	
+            Izquierdo.damePrecio() != Derecho.damePrecio()	
+    ;	
+}
