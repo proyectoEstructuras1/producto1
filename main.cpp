@@ -88,14 +88,19 @@ switch(op)
         case 10:
             int s;
             cout<<"apartir de que dato desea eliminar:";cin>>s;
-            a.eliminaSubarbol(s);
+            if(a.eliminaSubarbol(s))
+            cout<<"Producto eliminado..."<<endl;
+            else
+                cout <<"producto no encontrado"<<endl;
             break;
         case 11:
             int b;
             cout<<"Que numero de producto desea eliminar:";
             cin>>b;
-            a.eliminaNodo(b);
+            if(a.eliminaNodo(b))
             cout<<"Producto eliminado..."<<endl;
+            else
+                cout <<"producto no encontrado"<<endl;
             break;
         case 12:
             a.eliminaArbol();
