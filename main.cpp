@@ -9,18 +9,7 @@ void operaciones(listaP& a, int op);
 
 int main(void)
 {listaP q;
-  /*Producto a("leche",3,12.12), b ("agua",1,12.1),c("ref",2,14.4),d("ref",4,14.4),e("ref",10,14.4),f("ref",9,14.4),g("ref",7,14.4),h("ref",3,14.4);
-
-q.insertaNodo(a);
-q.insertaNodo(b);
-q.insertaNodo(e);
-q.insertaNodo(c);
-q.insertaNodo(d);
-q.insertaNodo(f);
-q.insertaNodo(g);
-q.insertaNodo(h);
-q.eliminaNodo(3);
-q.muestraIniFin();*/
+ 
 while(menu(q));
 
     return 0;
